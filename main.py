@@ -94,6 +94,24 @@ ScreenManager:
         """
 LO = '''
 MDScreen:
+    name:"pre"
+    MDFloatLayout:
+        md_bg_color: 115/255.0, 62/255.0, 198/255.0, 1
+        MDLabel:
+            text:"Welcome"
+            pos_hint:{"center_x": .5, "center_y": .2}
+            halign:"center"
+            theme_text_color:"Custom"
+            text_color: 1, 1, 1, 1
+            font_size:"35sp"
+        MDLabel:
+            text:"App by santhoshkumar"
+            pos_hint:{"center_x": .5, "center_y": .15}
+            halign:"center"
+            theme_text_color:"Custom"
+            text_color: 1, 1, 1, 1
+            font_size:"14sp"
+
      '''
 
 
@@ -124,7 +142,7 @@ class MainApp(MDApp):
         Builder.load_string(s)
         # Builder.load_string(a)
         self.theme_cls.primary_palette = "Orange"
-        scr.add_widget((Builder.load_file("Main.kv")))
+        scr.add_widget((Builder.load_string(LO)))
 
         scr.add_widget((Builder.load_string(LO)))
         scr.add_widget(MenuScreen(name='menu'))
@@ -141,8 +159,10 @@ class MainApp(MDApp):
 
     def login(self, *args):
         scr.current = "login"
+    def user(self, *args):
+        print("clicked")
 
 
 if __name__ == "__main__":
-    
+
     MainApp().run()
